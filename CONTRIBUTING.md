@@ -1,4 +1,4 @@
-Keep in mind the main purpose of this project is for my to learn some Rust and make a fun game for my daughter..
+Keep in mind the main purpose of this project is for me to learn some Rust and make a fun game for my daughter..
 
 # Bug reports and feature requests
 If you find a bug or want to submit a feature request, you are most welcome. 
@@ -19,7 +19,7 @@ The below list is in descending order of priority (feel free to convince me to r
 * Sound feedback
 * Use HDMI output instead of Unicorn Hat HD
 
-#T echnical roadmap
+# Technical roadmap
 * No longer need to change toml file to cross compile (unicorn hat stuff)
 * EAGAIN in gamepad, is it an issue ?
 * Cleanup of modules/crates/traits
