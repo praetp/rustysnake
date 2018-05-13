@@ -7,7 +7,7 @@ What makes it special ?
 * It's designed to take it's input from a USB input device that supports buttons typically found on a gamepad.
   FYI: I am using [this one](https://www.onlinekabelshop.nl/snes-style-usb-controller-voor-pc-notebook-1-35-meter).
 
-TODO: add a nice video
+[Youtube movie](https://youtu.be/hgTkUtSULx8)
 
 # Why ?
 I was interested to learn more about Rust and the only way to learn a new programming language is by _using_ it. 
