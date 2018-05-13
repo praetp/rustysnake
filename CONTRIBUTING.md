@@ -20,6 +20,7 @@ The below list is in descending order of priority (feel free to convince me to r
 * Use HDMI output instead of Unicorn Hat HD
 
 # Technical roadmap
+* Make configuration file to make input device configurable
 * No longer need to change toml file to cross compile (unicorn hat stuff)
 * EAGAIN in gamepad, is it an issue ?
 * Cleanup of modules/crates/traits

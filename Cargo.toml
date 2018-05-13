@@ -2,22 +2,24 @@
 name = "rustysnake"
 version = "0.1.0"
 authors = ["Paul Praet"]
-
+publish = false
+repository = "https://github.com/praetp/rustysnake"
+readme = "README.md"
+license = "MIT"
 
 [dependencies]
 mio = "0.6.12"
-evdev-rs = { git = "https://github.com/huntaub/evdev-rs" }
+evdev-rs = "0.0.1"
 nix = "0.7.0"
 libc = "0.2.36"
 rgb = "0.8.6"
 rand = "0.4"
 
+[patch.crates-io]
+evdev-rs = { git = "https://github.com/huntaub/evdev-rs" }
+
 [dependencies.unicorn_hat_hd]
 version = "0.2.1"
-default-features = false
-
-#Use line below when cross-compiling for Raspberry Pi
-features = ["hardware"]
-
-#Use line below to build for host
+#default-features = false
 #features = ["fake-hardware"]
+#Hitting here https://github.com/rust-lang/cargo/issues/1197
