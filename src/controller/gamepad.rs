@@ -1,4 +1,3 @@
-use nix::errno::Errno;
 pub use self::evdev::*;
 pub use self::evdev::enums::*;
 use std::fs::File;
@@ -12,7 +11,7 @@ extern crate evdev_rs as evdev;
 pub struct Gamepad {
     devpath: String,
     device: Device,
-    file: File,
+    raw_fd: i32,
     last_event: Option<MyInputEvent>
 }
 
@@ -50,12 +49,13 @@ impl Eq for Gamepad {}
 pub fn from_path(path: &String) -> io::Result<Gamepad> {
 
     let f = File::open(&path).expect("file not found");
-    let d = Device::new_from_fd(&f).unwrap();
+    let rawfd = f.as_raw_fd(); //maybe not so nice as rawfd could outlive f (which is owned by device)
+    let d = Device::new_from_fd(f).expect("could not open device");
 
     let gp = Gamepad {
         devpath: path.clone(),
         device: d,
-        file: f,
+        raw_fd: rawfd,
         last_event: None
     };
 
@@ -185,12 +185,12 @@ impl Gamepad {
     }
 
     pub fn get_fd(&self) -> i32 {
-        self.file.as_raw_fd()
+        self.raw_fd
     }
 
     pub fn process_gamepad_event<F: FnMut(&Gamepad, &InputEvent)>(&self, mut f: F) {
        loop {
-            let a = self.device.next_event(evdev::NORMAL);
+            let a = self.device.next_event(evdev::ReadFlag::NORMAL);
             if a.is_ok() {
                 let mut result = a.ok().unwrap();
                 match result.0 {
@@ -198,7 +198,7 @@ impl Gamepad {
                         println!("::::::::::::::::::::: dropped ::::::::::::::::::::::");
                         while result.0 == ReadStatus::Sync {
                             print_sync_dropped_event(&result.1);
-                            let a = self.device.next_event(evdev::SYNC);
+                            let a = self.device.next_event(evdev::ReadFlag::SYNC);
                             if a.is_ok() {
                                 result = a.ok().unwrap();
                             } else {
@@ -212,13 +212,14 @@ impl Gamepad {
                     },
                 }
             } else {
-                match a.err().unwrap() {
-                    Errno::EAGAIN => {
-                        /* TODO: is it normal we end up here? I forgot, investigate..*/
+                let err = a.err().unwrap();
+                match err.raw_os_error() {
+                    Some(libc::EAGAIN) => {
                         break;
                     },
                     _ => {
-                        panic!("Unexpected error");
+                        println!("{}", err);
+                        break;
                     }
                 }
             }

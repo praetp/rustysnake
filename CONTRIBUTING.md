@@ -1,4 +1,4 @@
-Keep in mind the main purpose of this project is for me to learn some Rust and make a fun game for my daughter..
+Keep in mind the main purpose of this project is for me to learn some Rust and make a fun game for my kids..
 
 # Bug reports and feature requests
 If you find a bug or want to submit a feature request, you are most welcome. 
@@ -20,6 +20,7 @@ The below list is in descending order of priority (feel free to convince me to r
 * Use HDMI output instead of Unicorn Hat HD
 
 # Technical roadmap
+* Consider replacing mio by tokio
 * Make configuration file to make input device configurable
 * No longer need to change toml file to cross compile (unicorn hat stuff)
 * EAGAIN in gamepad, is it an issue ?

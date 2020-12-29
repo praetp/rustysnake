@@ -13,8 +13,6 @@ use view::unicornhd;
 
 extern crate libc;
 extern crate mio;
-extern crate nix;
-
 extern crate unicorn_hat_hd;
 
 
@@ -42,7 +40,7 @@ fn main() {
 
 fn start(device_path: &String) {
 
-    let gamepad:gamepad::Gamepad = match gamepad::from_path(device_path) {
+    let gamepad : gamepad::Gamepad = match gamepad::from_path(device_path) {
         Ok(gp) => gp,
         Err(e) => panic!("failed to create Gamepad; err={:?}", e),
     };
@@ -71,7 +69,7 @@ fn poll_timeout(last_update: SystemTime, tick_duration : &Duration) -> Duration 
     }
 }
 
-fn game_loop(snakegame : &mut SnakeGame, gamepad: &Gamepad, display: &mut SnakeDisplay) {
+fn game_loop(snakegame : &mut SnakeGame, gamepad: &Gamepad, display: &mut dyn SnakeDisplay) {
 
     let poll = match Poll::new() {
         Ok(poll) => poll,
