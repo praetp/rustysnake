@@ -11,8 +11,6 @@ use std::time::SystemTime;
 use view::snakedisplay::SnakeDisplay;
 use view::unicornhd;
 
-extern crate libc;
-extern crate mio;
 extern crate unicorn_hat_hd;
 
 
@@ -111,5 +109,6 @@ fn game_loop(snakegame : &mut SnakeGame, gamepad: &Gamepad, display: &mut dyn Sn
             }
         }
     }
-
+    println!("Score was {}", snakegame.get_score());
+   
 }

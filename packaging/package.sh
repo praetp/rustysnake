@@ -1,6 +1,6 @@
 #!/bin/bash
 # this script requires fpm (see https://fpm.readthedocs.io/en/latest/installing.html)
-VERSION=0.1.1
+VERSION=0.1.2
 rm *.deb
 set -e 
 cd "$(dirname "$0")"

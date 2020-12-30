@@ -1,11 +1,12 @@
 [package]
 name = "rustysnake"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Paul Praet"]
 publish = false
 repository = "https://github.com/praetp/rustysnake"
 readme = "README.md"
 license = "MIT"
+edition = "2018"
 
 [dependencies]
 mio = "^0.6"

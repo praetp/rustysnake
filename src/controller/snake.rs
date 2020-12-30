@@ -1,19 +1,15 @@
-pub use controller::gamepad;
-use controller::gamepad::Gamepad;
-use model::game::SnakeGame;
-use model::shared::DOWN;
-use model::shared::LEFT;
-use model::shared::RIGHT;
-use model::shared::UP;
+use crate::{model::{game::SnakeGame, shared::{DOWN, LEFT, RIGHT, UP}}, view::unicornhd::{BLUE, GREEN, RED, YELLOW, update_current_snake_color}};
+
 pub use self::evdev::*;
 pub use self::evdev::enums::*;
-use view::unicornhd::*;
-use controller::gamepad::print_event;
+
+use super::gamepad::{Gamepad, print_event};
+
 /* TODO AVOID THIS REIMPORT */
 extern crate evdev_rs as evdev;
 
 
-pub fn process_input_event(snake_game : &mut self::SnakeGame, _gamepad : &Gamepad, evt: &InputEvent) {
+pub fn process_input_event(snake_game : &mut SnakeGame, _gamepad : &Gamepad, evt: &InputEvent) {
 
     match evt.event_type {
         EventType::EV_ABS => {

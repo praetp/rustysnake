@@ -1,7 +1,7 @@
-use model::shared::Position;
-use model::shared::UnitVector;
 use std::collections::vec_deque::Iter;
 use std::collections::VecDeque;
+
+use super::shared::{Position, UnitVector};
 
 extern crate rand;
 
@@ -65,6 +65,10 @@ impl SnakeGame {
 
     pub fn get_state(&self) -> &GameState {
         return &self.state;
+    }
+
+    pub fn get_score(&self) -> usize {
+        self.snake.segments.len() - 1
     }
 
     fn place_new_bait(&mut self) {

@@ -1,8 +1,7 @@
-use model::game::GameState;
-use model::game::SnakeGame;
+use crate::model::game::{GameState, SnakeGame};
 use self::rgb::*;
 use self::unicorn_hat_hd::UnicornHatHd;
-use view::snakedisplay::SnakeDisplay;
+use super::snakedisplay::SnakeDisplay;
 
 extern crate rgb;
 extern crate unicorn_hat_hd;
