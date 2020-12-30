@@ -1,6 +1,6 @@
 [package]
 name = "rustysnake"
-version = "0.1.2"
+version = "0.2.0"
 authors = ["Paul Praet"]
 publish = false
 repository = "https://github.com/praetp/rustysnake"
@@ -14,7 +14,9 @@ evdev-rs = "^0.4"
 libc = "^0.2"
 rgb = "^0.8"
 rand = "^0.8"
-
+rusttype = "^0.9"
+imageproc = "^0.21"
+image = "^0.23"
 
 [dependencies.unicorn_hat_hd]
 git = "https://github.com/BartMassey/unicorn-hat-hd-rs" #replace with https://github.com/jhelwig/unicorn-hat-hd-rs when PR has been accepted

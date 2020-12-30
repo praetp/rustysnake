@@ -5,7 +5,7 @@ Description=Rusty Snake
 User=pi
 Type=simple
 Restart=always
-RestartSec=1
+RestartSec=2
 ExecStart=/usr/bin/rustysnake /dev/input/event0
 
 [Install]

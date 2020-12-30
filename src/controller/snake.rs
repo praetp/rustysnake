@@ -23,7 +23,7 @@ pub fn process_input_event(snake_game : &mut SnakeGame, _gamepad : &Gamepad, evt
                             //This is button release, do nothing
                     } else {
                         print_event(evt);
-                        panic!("Unknown Y value {:?}", evt.value);
+                        println!("Unknown Y value {:?}", evt.value);
                     }
 
                 },
@@ -35,8 +35,9 @@ pub fn process_input_event(snake_game : &mut SnakeGame, _gamepad : &Gamepad, evt
                     } else if evt.value == 127 {
                         //This is button release, do nothing
                     } else {
+                        //I once saw evt.value 1. unclear how to trigger this.
                         print_event(evt);
-                        panic!("Unknown X value {:?}", evt.value);
+                        println!("Unknown X value {:?}", evt.value);
                     }
 
                 },
