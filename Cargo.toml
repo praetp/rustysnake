@@ -1,12 +1,12 @@
 [package]
 name = "rustysnake"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Paul Praet"]
 publish = false
 repository = "https://github.com/praetp/rustysnake"
 readme = "README.md"
 license = "MIT"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 mio = "^0.6"
@@ -25,4 +25,7 @@ git = "https://github.com/BartMassey/unicorn-hat-hd-rs" #replace with https://gi
 #Hitting here https://github.com/rust-lang/cargo/issues/1197
 
 [target.armv7-unknown-linux-gnueabihf]
+linker = "arm-none-linux-gnueabihf-gcc"
+
+[target.armv7-unknown-linux-musleabihf]
 linker = "arm-none-linux-gnueabihf-gcc"
